@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload CV</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Traitement CV avec LLM</h1>
+
+        <div class="upload-card">
+            <h2>Upload des CVs</h2>
+            <div class="dropzone" id="dropzone">
+                <p>Glissez vos fichiers ici ou <span class="link">parcourir</span></p>
+                <input type="file" id="files" multiple accept=".pdf,.docx" hidden>
+            </div>
+            <button id="submit">Sauvegarder</button>
+            <div id="status"></div>
+        </div>
+    </div>
+
+    <script src="/static/front.js"></script>
+</body>
+</html>
