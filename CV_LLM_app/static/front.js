@@ -3,6 +3,10 @@ const fileInput = document.getElementById('files');
 const submitBtn = document.getElementById('submit');
 const status = document.getElementById('status');
 
+const zoneResultat = document.getElementById('zone-resultat');
+const contenuCv = document.getElementById('contenu-cv');
+
+
 let files = [];
 
 // Click pour ouvrir
@@ -53,6 +57,11 @@ submitBtn.onclick = async () => {
         if (res.ok) {
             status.textContent = data.message;
             status.className = 'success';
+            if (data.text_extrait)
+            {
+                contenuCv.textContent = data.text_extrait;
+                zoneResultat.style.display = 'block';
+            }
             files = [];
             fileInput.value = '';
             dropzone.querySelector('p').textContent = 'Glissez vos fichiers ici';

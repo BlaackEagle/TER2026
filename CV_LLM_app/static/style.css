@@ -126,3 +126,10 @@ button:disabled {
     color: #742a2a;
     border-left: 4px solid #e53e3e;
 }
+
+.miniText
+{
+    color: white;
+    text-align: center;
+    margin-bottom: 2%;
+}
