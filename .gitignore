@@ -9,3 +9,9 @@ Thumbs.db
 uploads/*
 
 !uploads/README.md
+
+!uploads/CV_Samy.pdf
+
+!uploads/CV_Samy.txt
+
+.idea/
