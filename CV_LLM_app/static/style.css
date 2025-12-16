@@ -1,177 +1,128 @@
-:root {
-    --primary: #1c1c57; 
-    --primary-hover: #4338ca;
-    --bg-color: #f3f4f6;
-    --card-bg: #ffffff;
-    --text-main: #1f2937;
-    --text-muted: #6b7280;
-    --success: #10b981;
-    --warning: #f59e0b;
-    --danger: #ef4444;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-* { box-sizing: border-box; margin: 0; padding: 0; }
-
 body {
-    font-family: 'Inter', sans-serif;
-    background-color: --bg-color;
-    background: linear-gradient(135deg, #bfd2ef 0%, #4886eb 100%);
-    color: var(--text-main);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     min-height: 100vh;
-    padding: 2rem;
+    padding: 20px;
 }
 
 .container {
-    max-width: 1200px;
-    margin: 0 auto;
+    max-width: 650px;
+    margin: 60px auto;
 }
 
-header {
+h1 {
+    color: white;
     text-align: center;
-    margin-bottom: 2rem;
+    margin-bottom: 40px;
+    font-size: 2.2em;
+    font-weight: 600;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.1);
 }
 
-header h1 { font-size: 2.5rem; color: var(--primary); margin-bottom: 0.5rem; }
-header p { color: var(--text-muted); }
-
-main {
-    display: grid;
-    grid-template-columns: 1fr 1.5fr; 
-    gap: 2rem;
-}
-
-.card {
-    background: var(--card-bg);
-    padding: 1.5rem;
+.upload-card {
+    background: white;
+    padding: 35px;
     border-radius: 12px;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-    margin-bottom: 1.5rem;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
 }
 
-h2 { font-size: 1.25rem; margin-bottom: 0.5rem; }
-.subtitle { font-size: 0.875rem; color: var(--text-muted); margin-bottom: 1rem; }
-
-textarea {
-    width: 100%;
-    height: 150px;
-    padding: 0.75rem;
-    border: 1px solid #e5e7eb;
-    border-radius: 8px;
-    resize: vertical;
-    font-family: inherit;
+h2 {
+    margin-bottom: 20px;
+    color: #2d3748;
+    font-size: 1.3em;
 }
 
-.drop-zone {
-    border: 2px dashed #d1d5db;
-    border-radius: 8px;
-    padding: 2rem;
+.dropzone {
+    border: 3px dashed #cbd5e0;
+    border-radius: 10px;
+    padding: 50px 20px;
     text-align: center;
     cursor: pointer;
     transition: all 0.3s ease;
+    margin-bottom: 25px;
+    background: #f7fafc;
 }
 
-.drop-zone:hover, .drop-zone.dragover {
-    border-color: var(--primary);
-    background-color: #eef2ff;
+.dropzone:hover,
+.dropzone.hover {
+    border-color: #667eea;
+    background: #edf2f7;
+    transform: translateY(-2px);
 }
 
-.drop-zone .icon { font-size: 2rem; display: block; margin-bottom: 0.5rem; }
-.browse-btn { color: var(--primary); font-weight: 600; text-decoration: underline; }
+.dropzone p {
+    color: #4a5568;
+    font-size: 1.05em;
+}
 
-.btn-primary {
-    display: block;
+.link {
+    color: #667eea;
+    text-decoration: none;
+    font-weight: 600;
+    border-bottom: 2px solid #667eea;
+}
+
+.link:hover {
+    color: #5a67d8;
+}
+
+button {
     width: 100%;
-    background-color: var(--primary);
+    padding: 16px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     color: white;
-    padding: 1rem;
     border: none;
     border-radius: 8px;
-    font-size: 1rem;
+    font-size: 16px;
     font-weight: 600;
     cursor: pointer;
-    margin-top: 1rem;
-    transition: background 0.2s;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
 }
 
-.btn-primary:hover { background-color: var(--primary-hover); }
+button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+}
 
-.main{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+button:active {
+    transform: translateY(0);
+}
+
+button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+#status {
+    margin-top: 20px;
+    padding: 12px 15px;
+    border-radius: 8px;
     text-align: center;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    font-weight: 500;
+    display: none;
 }
 
-.results-header {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 1rem;
-}
-
-
-.badge {
-    background: #e0e7ff;
-    color: var(--primary);
-    padding: 0.25rem 0.75rem;
-    border-radius: 999px;
-    font-size: 0.875rem;
-    font-weight: 600;
-}
-
-.results-grid {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-}
-
-.candidate-card {
-    background: white;
-    padding: 1.5rem;
-    border-radius: 12px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-    border-left: 5px solid transparent;
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    animation: fadeIn 0.5s ease;
-}
-
-.candidate-card.high-match { border-left-color: var(--success); }
-.candidate-card.medium-match { border-left-color: var(--warning); }
-.candidate-card.low-match { border-left-color: var(--danger); }
-
-.candidate-info h3 { margin-bottom: 0.25rem; }
-.candidate-role { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 0.75rem; }
-.candidate-summary { font-size: 0.95rem; line-height: 1.5; color: #4b5563; }
-
-.score-box {
-    text-align: center;
-    min-width: 60px;
-}
-
-.score-val {
+#status.success,
+#status.error {
     display: block;
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: var(--primary);
 }
 
-.score-label { font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; }
-
-.tags { margin-top: 10px; display: flex; gap: 5px; flex-wrap: wrap; }
-.tag { font-size: 0.75rem; background: #f3f4f6; padding: 2px 8px; border-radius: 4px; color: #555; }
-
-@media (max-width: 768px) {
-    main { grid-template-columns: 1fr; }
+#status.success {
+    background: #c6f6d5;
+    color: #22543d;
+    border-left: 4px solid #38a169;
 }
 
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
+#status.error {
+    background: #fed7d7;
+    color: #742a2a;
+    border-left: 4px solid #e53e3e;
 }
