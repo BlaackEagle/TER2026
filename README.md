@@ -1,34 +1,34 @@
 # ProjetTER-S6_2026
 
 
-##Analyse de CV LLM
+## Analyse de CV LLM
 
 
 Pour récupérer le projet, et que tout s'execute correctement, suivre ces étapes : 
 
 
-##1 - Cloner le projet
+## 1 - Cloner le projet
 (git clone git@gitlab.etu.umontpellier.fr:e20200004120/projetter-s6_2026.git)
 
-##2 - Activer l'environnement virtuel (venv) : 
+## 2 - Activer l'environnement virtuel (venv) : 
 
 
-###Sur Windows
+### Sur Windows
 
 python -m venv venv
 venv\Scripts\activate
 
-###Sur Linux
+### Sur Linux
 python3 -m venv venv
 source venv/bin/activate
 
-##3 - Installer les dépendances
+## 3 - Installer les dépendances
 pip install -r requirements.txt
 
-##4 - Lancer l'app
+## 4 - Lancer l'app
 python CV_LLM_app/app.py
 
-###PS : Quand vous ajoutez des dépendances (après un pip install+import d'une libraire faites les commandes suivantes)
+### PS : Quand vous ajoutez des dépendances (après un pip install+import d'une libraire faites les commandes suivantes)
 
 pip freeze > requirements.txt
 
