@@ -9,3 +9,5 @@ Thumbs.db
 uploads/*
 
 !uploads/README.md
+
+!uploads/CV_Samy.pdf
