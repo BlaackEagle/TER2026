@@ -15,12 +15,18 @@ Pour récupérer le projet, et que tout s'execute correctement, suivre ces étap
 
 ### Sur Windows
 
-python -m venv venv
-venv\Scripts\activate
+python -m venv venv  
+
+
+venv\Scripts\activate  
+
+
 
 ### Sur Linux
-python3 -m venv venv
-source venv/bin/activate
+python3 -m venv venv  
+
+source venv/bin/activate  
+
 
 ## 3 - Installer les dépendances
 pip install -r requirements.txt
