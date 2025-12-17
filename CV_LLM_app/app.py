@@ -1,6 +1,8 @@
 import os
 from flask import Flask, jsonify, render_template, request
 from werkzeug.utils import secure_filename
+
+from services.pdf_parser import extraire_intelligent
 from services.pdf_parser import extraire_text_pdf
 
 
@@ -36,7 +38,7 @@ def analyse_cv():
         try:
             file.save(file_path)
             stockés += 1
-            text_extrait += extraire_text_pdf(file_path)
+            text_extrait += extraire_intelligent(file_path)
 
             if text_extrait :
                 txt_path = file_path.replace('.pdf', '.txt')
