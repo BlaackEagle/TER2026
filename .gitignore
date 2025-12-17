@@ -6,12 +6,8 @@ __pycache__/
 .DS_Store
 Thumbs.db
 
-uploads/*
+uploads/
 
 !uploads/README.md
-
-!uploads/CV_Samy.pdf
-
-!uploads/CV_Samy.txt
 
 .idea/
