@@ -19,7 +19,7 @@ def cleaner_text(texte) :
             text_final += mot_temp + " "
             text_final += liste[i]
             mot_temp = ""
-    return text_final + mot_temp
+    return text_final[1:] + mot_temp
 
 
 def extraire_text_pdf(pdf_path) :
