@@ -21,6 +21,14 @@ def cleaner_text(texte) :
             mot_temp = ""
     return text_final[1:] + mot_temp
 
+def cleaner_texte2(texte) :
+    liste = texte.split()
+    text_final = ""
+    liste_final = list()
+    for i in liste :
+        text_final += i + " "
+    return text_final
+
 
 def extraire_text_pdf(pdf_path) :
 
@@ -54,7 +62,7 @@ def extraire_intelligent(pdf_path):
             if texte:
                 texte_complet += texte + " "
 
-    return cleaner_text(texte_complet)
+    return cleaner_texte2(texte_complet)
 
 if __name__ == "__main__":
     print("--------------")
