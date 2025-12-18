@@ -6,6 +6,10 @@ const status = document.getElementById('status');
 const zoneResultat = document.getElementById('zone-resultat');
 const contenuCv = document.getElementById('contenu-cv');
 
+const sendBtn = document.getElementById('send-btn');
+const promptInput = document.getElementById('prompt-input');
+const chatHistory = document.getElementById('chat-history');
+
 
 let files = [];
 
@@ -104,4 +108,52 @@ submitBtn.onclick = async () => {
 
     submitBtn.disabled = false;
     submitBtn.textContent = 'Sauvegarder';
+};
+
+sendBtn.onclick = async () => {
+    const question = promptInput.value;
+    if (!question) return;
+
+    chatHistory.innerHTML += `<p><strong>Vous :</strong> ${question}</p>`;
+    promptInput.value = '';
+    sendBtn.disabled = true;
+    sendBtn.textContent = '...';
+
+    try {
+        const res = await fetch('/chat', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ prompt: question })
+        });
+
+        const data = await res.json();
+
+        if (res.ok) {
+            let reponseHTML = `<div style="background: #f0f4f8; padding: 10px; border-radius: 8px; margin: 10px 0;">
+                <p><strong>IA :</strong> ${data.reponse}</p>`;
+            
+            if (data.source) {
+                reponseHTML += `<p style="font-size: 0.9em; color: #555; margin-top: 5px;">
+                    <em>Extrait de ${data.source} :</em><br>
+                    "${data.extrait}"
+                </p>`;
+            }
+            reponseHTML += `</div>`;
+            
+            chatHistory.innerHTML += reponseHTML;
+        } else {
+            chatHistory.innerHTML += `<p style="color: red;">Erreur: ${data.reponse || "Problème serveur"}</p>`;
+        }
+
+    } catch (err) {
+        console.error(err);
+        chatHistory.innerHTML += `<p style="color: red;">Erreur de connexion</p>`;
+    }
+
+    sendBtn.disabled = false;
+    sendBtn.textContent = 'Envoyer';
+    
+    chatHistory.scrollTop = chatHistory.scrollHeight;
 };
