@@ -134,6 +134,7 @@ sendBtn.onclick = async () => {
             let reponseHTML = `<div style="background: #f0f4f8; padding: 10px; border-radius: 8px; margin: 10px 0;">
                 <p><strong>IA :</strong> ${data.reponse}</p>`;
             
+        
             if (data.source) {
                 reponseHTML += `<p style="font-size: 0.9em; color: #555; margin-top: 5px;">
                     <em>Extrait de ${data.source} :</em><br>
@@ -143,6 +144,20 @@ sendBtn.onclick = async () => {
             reponseHTML += `</div>`;
             
             chatHistory.innerHTML += reponseHTML;
+
+            if (data.vecteur_prompt) {
+            const apercuVecteur = data.vecteur_prompt.slice(0, 5).map(n => n.toFixed(4)).join(', ');
+        
+            let infoDebug = `
+                <div style="font-size: 0.8em; color: #666; margin-top: 5px; border-top: 1px dashed #ccc; padding-top: 5px;">
+                    <p><strong>Info Debug :</strong></p>
+                    <p>Question (ecrite) : <em>"${data.prompt_utilisateur}"</em></p>
+                    <p>Vecteur (extrait) : [ ${apercuVecteur}, ... ] <br>
+                    Dimensions : ${data.vecteur_prompt.length}</p>
+                </div>
+            `;
+            chatHistory.innerHTML += infoDebug;
+    }
         } else {
             chatHistory.innerHTML += `<p style="color: red;">Erreur: ${data.reponse || "Problème serveur"}</p>`;
         }

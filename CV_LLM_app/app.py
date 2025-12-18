@@ -100,7 +100,9 @@ def chat_avec_cv():
     return jsonify({
         'reponse': reponse_systeme,
         'extrait': meilleur_cv['texte'][:500] + "...", 
-        'source': meilleur_cv['nom_fichier']
+        'source': meilleur_cv['nom_fichier'],
+        'prompt_utilisateur': question,   
+        'vecteur_prompt': vecteur_question.tolist()
     })
 
 
