@@ -28,4 +28,4 @@ def pertinence(vecteur1, vecteur2) :
     if cosinus_similarite < 0 :
         return 0
     else :
-        return cosinus_similarite
+        return cosinus_similarite*100
