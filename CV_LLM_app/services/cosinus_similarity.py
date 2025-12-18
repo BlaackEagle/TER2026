@@ -21,3 +21,11 @@ def cosinus_similarity(vecteur1, vecteur2) :
         return 0
 
     return produit_scalaire/(norme_euclidienne1*norme_euclidienne2)
+
+
+def pertinence(vecteur1, vecteur2) :
+    cosinus_similarite = cosinus_similarity(vecteur1, vecteur2)
+    if cosinus_similarite < 0 :
+        return 0
+    else :
+        return cosinus_similarite
