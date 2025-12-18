@@ -142,7 +142,77 @@ button:disabled {
     margin-bottom: 2%;
 }
 
+.cv-card {
+    border: 1px solid #ddd;
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    transition: transform 0.2s;
+}
 
+.cv-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.cv-card h3 {
+    margin-top: 0;
+    color: #333;
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+}
+
+.cv-stats {
+    background: #f0f4f8;
+    padding: 12px;
+    border-radius: 6px;
+    margin-bottom: 15px;
+    border-left: 4px solid #0056b3;
+}
+
+.cv-stats p {
+    margin: 5px 0;
+    color: #555;
+    font-size: 0.95rem;
+}
+
+
+.vector-data {
+    color: #0056b3;
+    font-weight: bold;
+}
+
+.text-label {
+    margin-bottom: 8px;
+    color: #444;
+}
+
+
+.cv-content-box {
+    background: #f8f9fa;
+    padding: 15px;
+    border: 1px solid #e9ecef;
+    border-radius: 4px;
+    font-size: 0.9em;
+    color: #333;
+
+
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+
+.cv-content-box::-webkit-scrollbar {
+    width: 8px;
+}
+.cv-content-box::-webkit-scrollbar-thumb {
+    background-color: #ccc;
+    border-radius: 4px;
+}
 @keyframes gradient {
     0% {
         background-position: 0% 50%;

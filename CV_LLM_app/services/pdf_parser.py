@@ -29,7 +29,6 @@ def cleaner_texte2(texte) :
         text_final += i + " "
     return text_final
 
-
 def extraire_text_pdf(pdf_path) :
 
     if not os.path.exists(pdf_path) : # Test si le chemin du pdf est valide (sécurité)

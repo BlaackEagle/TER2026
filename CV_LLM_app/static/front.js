@@ -53,15 +53,42 @@ submitBtn.onclick = async () => {
         });
 
         const data = await res.json();
-        
+
         if (res.ok) {
             status.textContent = data.message;
             status.className = 'success';
-            if (data.text_extrait)
-            {
-                contenuCv.textContent = data.text_extrait;
+
+            const listeCVs = data.data;
+
+            if (zoneResultat) {
                 zoneResultat.style.display = 'block';
-            }
+                zoneResultat.innerHTML = "";
+
+                listeCVs.forEach(cv => {
+                    const box_result = document.createElement('div');
+
+                    box_result.className = 'cv-card';
+
+                    const vectorPreview = cv.vecteur.slice(0, 8).map(n => n.toFixed(5)).join(', ');
+
+                    box_result.innerHTML = `
+                       <h3>${cv.nom_fichier}</h3>
+                        
+                        <div class="cv-stats">
+                            <p><strong>Dimensions :</strong> ${cv.forme_vecteur}</p>
+                            <p><strong>Vecteur (extrait) :</strong> <span class="vector-data">[ ${vectorPreview}, ... ]</span></p>
+                        </div>
+
+                        <p class="text-label"><strong>Contenu du CV :</strong></p>
+                        
+                        <div class="cv-content-box">
+                            ${cv.texte_fichier}
+                        </div>`;
+
+                        zoneResultat.appendChild(box_result);
+                    });
+                }
+
             files = [];
             fileInput.value = '';
             dropzone.querySelector('p').textContent = 'Glissez vos fichiers ici';
