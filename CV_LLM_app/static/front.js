@@ -5,7 +5,7 @@ const status = document.getElementById('status');
 
 const zoneResultat = document.getElementById('zone-resultat');
 const contenuCv = document.getElementById('contenu-cv');
-
+const promptInput = document.getElementById('user-prompt');
 
 let files = [];
 
@@ -45,7 +45,7 @@ submitBtn.onclick = async () => {
 
     const formData = new FormData();
     files.forEach(f => formData.append('cv', f));
-
+    formData.append('prompt', promptInput.value);
     try {
         const res = await fetch('/analyse', {
             method: 'POST',
@@ -77,6 +77,7 @@ submitBtn.onclick = async () => {
                         <div class="cv-stats">
                             <p><strong>Dimensions :</strong> ${cv.forme_vecteur}</p>
                             <p><strong>Vecteur (extrait) :</strong> <span class="vector-data">[ ${vectorPreview}, ... ]</span></p>
+                            <p><strong>Pertinence : ${cv.pertinence} %</strong></p>
                         </div>
 
                         <p class="text-label"><strong>Contenu du CV :</strong></p>

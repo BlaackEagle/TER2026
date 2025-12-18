@@ -21,8 +21,11 @@ body {
 }
 
 .container {
-    max-width: 650px;
-    margin: 60px auto;
+    width: 45%;
+    margin: 0 !important;
+    max-width: none !important;
+    display: flex;
+    flex-direction: column;
 }
 
 h1 {
@@ -48,23 +51,47 @@ h2 {
 }
 
 .dropzone {
-    border: 3px dashed #cbd5e0;
-    border-radius: 10px;
-    padding: 50px 20px;
+    border: 2px dashed #ccc;
+    padding: 30px;
     text-align: center;
     cursor: pointer;
+    background: #f9f9f9;
     transition: all 0.3s ease;
-    margin-bottom: 25px;
-    background: #f7fafc;
+    border-radius: 10px 10px 0 0;
+    border-bottom: none;
 }
 
-.dropzone:hover,
 .dropzone.hover {
     border-color: #667eea;
     background: #edf2f7;
     transform: translateY(-2px);
 }
+.search-box {
+    width: 100%;
+    height: 80px;
+    padding: 15px;
 
+
+    border: 2px solid #ccc;
+    border-top: 1px solid #eee;
+
+
+    border-radius: 0 0 10px 10px;
+
+    background-color: #fff;
+    font-family: inherit;
+    font-size: 1rem;
+    resize: none;
+    outline: none;
+    box-sizing: border-box;
+    display: block;
+    margin-bottom: 20px;
+}
+
+.search-box:focus {
+    border-color: #2196f3;
+    background-color: #fbfbfb;
+}
 .dropzone p {
     color: #4a5568;
     font-size: 1.05em;
@@ -145,7 +172,7 @@ button:disabled {
 .cv-card {
     border: 1px solid #ddd;
     padding: 20px;
-    margin-top: 20px;
+    margin-top: 1px;
     border-radius: 8px;
     background-color: #fff;
     box-shadow: 0 2px 5px rgba(0,0,0,0.05);
@@ -189,7 +216,10 @@ button:disabled {
     color: #444;
 }
 
-
+.titreprincipal
+{
+    margin-top: 3%;
+}
 .cv-content-box {
     background: #f8f9fa;
     padding: 15px;
@@ -203,6 +233,26 @@ button:disabled {
     word-wrap: break-word;
     max-height: 200px;
     overflow-y: auto;
+}
+.lesdeuxfenetres {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    justify-content: center;
+    gap: 30px;
+    width: 98%;
+    max-width: 1300px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+
+#zone-resultat {
+    width: 45%;
+    flex: 1;
+    margin: 0 !important;
+    max-width: none !important;
+
 }
 
 
