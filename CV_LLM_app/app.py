@@ -72,40 +72,19 @@ def chat_avec_cv():
     question = data.get('prompt')
     
     if not question:
-        return jsonify({'reponse': "Je n'ai pas compris la question."}), 400
+        return jsonify({'reponse': "pas de question recu"}), 400
         
-    if not MEMOIRE_CVS:
-        return jsonify({'reponse': "Aucun CV n'est chargé. Veuillez uploader des documents d'abord."}), 400
-
+    
     vecteur_question = vectoriser_text(question)
 
-    meilleur_score = -1
-    meilleur_cv = None
-
-    for cv in MEMOIRE_CVS:
-        score = cosine_similarity([vecteur_question], [cv['vecteur']])[0][0]
-        if score > meilleur_score:
-            meilleur_score = score
-            meilleur_cv = cv
-
-    if meilleur_score < 0.2:
-        return jsonify({
-            'reponse': "Désolé, je ne trouve pas d'information pertinente dans les CVs pour cette question.",
-            'source': None
-        })
-
-    
-    reponse_systeme = f"J'ai trouvé une réponse pertinente dans le fichier **{meilleur_cv['nom_fichier']}** (Pertinence: {meilleur_score:.2f})."
     
     return jsonify({
-        'reponse': reponse_systeme,
-        'extrait': meilleur_cv['texte'][:500] + "...", 
-        'source': meilleur_cv['nom_fichier'],
+        'reponse': "vecteur genere avec succès",
+        'extrait': None, 
+        'source': None,
         'prompt_utilisateur': question,   
         'vecteur_prompt': vecteur_question.tolist()
     })
-
-
 
 if __name__ == '__main__':
     app.run(debug=True)
