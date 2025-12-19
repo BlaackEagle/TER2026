@@ -20,6 +20,8 @@ python -m venv venv
 
 venv\Scripts\activate  
 
+Si cette commande passe pas, c'est peut etre car l’exécution de scripts est désactivée sur votre système dans ce cas taper cette commande avant:
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process
 
 
 ### Sur Linux
