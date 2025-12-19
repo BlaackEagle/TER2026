@@ -27,11 +27,6 @@ dropzone.ondrop = (e) => {
 
 fileInput.onchange = (e) => updateFiles(e.target.files);
 
-function updateFiles(newFiles) {
-    files = Array.from(newFiles);
-    dropzone.querySelector('p').textContent = 
-        files.length ? `${files.length} fichier(s) sélectionné(s)` : 'Glissez vos fichiers ici';
-}
 
 // Envoi
 submitBtn.onclick = async () => {
@@ -106,3 +101,29 @@ submitBtn.onclick = async () => {
     submitBtn.disabled = false;
     submitBtn.textContent = 'Sauvegarder';
 };
+
+// rajout fichiers
+function updateFiles(newFiles) {
+    const nouveauxFichiers = Array.from(newFiles);
+    nouveauxFichiers.forEach(nouveau => {
+        if (!files.some(f => f.name === nouveau.name)) {
+            files.push(nouveau);
+        }
+    });
+
+    const p = dropzone.querySelector('p');
+
+    if (files.length > 0) {
+        p.innerHTML = `
+            <span style="font-weight: bold; font-size: 1.1em; color: #2d3748;">
+                ${files.length} fichier(s) prêt(s) à l'analyse
+            </span>
+            <br>
+            <span style="font-size: 0.85em; opacity: 0.7;">
+                Glissez d'autres fichiers ici ou <span class="link">parcourir</span>
+            </span>
+        `;
+    } else {
+        p.innerHTML = 'Glissez vos fichiers ici ou <span class="link">parcourir</span>';
+    }
+}
