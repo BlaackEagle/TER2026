@@ -21,13 +21,10 @@ def cleaner_text(texte) :
             mot_temp = ""
     return text_final[1:] + mot_temp
 
-def cleaner_texte2(texte) :
-    liste = texte.split()
-    text_final = ""
-    liste_final = list()
-    for i in liste :
-        text_final += i + " "
-    return text_final
+def cleaner_texte2(texte) :  #on laisse fct chunk gerer les sauts a la ligne, donc on les preserve
+    if not texte:
+        return ""
+    return texte.strip()
 
 def extraire_text_pdf(pdf_path) :
 
