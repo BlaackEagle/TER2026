@@ -5,22 +5,19 @@ from werkzeug.utils import secure_filename
 from services.pdf_parser import extraire_intelligent
 from services.vectorizer_de_text import vectoriser_text
 from services.cosinus_similarity import pertinence
+from services.chunking import fct_de_chunk
 
 app = Flask(__name__)
-
 UPLOAD_FOLDER = 'uploads'
 
 if not os.path.exists(UPLOAD_FOLDER):
     os.makedirs(UPLOAD_FOLDER)
-
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
-
 
 
 @app.route('/')
 def accueil():
     return render_template("accueil.html")
-
 
 
 @app.route('/analyse', methods=['POST'])
@@ -32,44 +29,55 @@ def analyse_cv():
     files = request.files.getlist('cv')
     user_prompt = request.form.get('prompt', '')
     print(f"Prompt reçu : {user_prompt}")
-    files = request.files.getlist('cv')
-    vecteur_prompt = vectoriser_text(user_prompt)
-    stockés = 0
-    text_extrait = ""
-    liste_donne_cv = list()
-    for file in files:
 
-        if file.filename == '':
-            continue
+    vecteur_prompt = vectoriser_text(user_prompt)
+
+    liste_donne_cv = list()
+
+    for file in files:
+        if file.filename == '': continue
 
         filename = secure_filename(file.filename)
         file_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
         file.save(file_path)
-        stockés += 1
+
         text_extrait = extraire_intelligent(file_path)
-        if text_extrait :
-            vecteur_texte = vectoriser_text(text_extrait)
-            score_de_pertinence = int(pertinence(vecteur_prompt, vecteur_texte))
+        
+        if text_extrait:
+            # DEBUT CHUNKING
+            chunks = fct_de_chunk(text_extrait, taille=4, tag="[CV]")
+            print(f"--> {filename} : {len(chunks)} chunks obtenus")
+
+            meilleur_score = -1
+            meilleur_passage = ""
+            
+            # On teste tt les morceaux et on retourne le meilleur
+            for chunk in chunks:
+                vecteur_chunk = vectoriser_text(chunk)
+                score_chunk = int(pertinence(vecteur_prompt, vecteur_chunk))
+                
+                if score_chunk > meilleur_score:
+                    meilleur_score = score_chunk
+                    meilleur_passage = chunk
+
+            print(f"--> {filename} Score Max : {meilleur_score}%")
+            
             fichier_CV = {
-                'texte' : text_extrait,
-                'nom_fichier' : filename,
-                'texte_fichier' : text_extrait,
-                'vecteur' : vecteur_texte.tolist(),
-                'forme_vecteur' : list(vecteur_texte.shape),
-                'pertinence' : score_de_pertinence
+                'nom_fichier': filename,
+                'texte_fichier': text_extrait,     
+                'meilleur_extrait': meilleur_passage, 
+                'pertinence': meilleur_score       
             }
+
             liste_donne_cv.append(fichier_CV)
-        else :
-            print("Le parser ne récupère aucun texte")
+        else:
+            print(f"Erreur extraction pour {filename}")
 
     return jsonify({
-        'message': 'Succès',
-        'count': stockés,
-        'info': f'{stockés} fichier stocké!',
-        'prompt' : user_prompt,
-        'data' : liste_donne_cv
+        'message': 'Analyse terminée',
+        'count': len(liste_donne_cv),
+        'data': liste_donne_cv
     })
-
 
 
 if __name__ == '__main__':
