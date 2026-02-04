@@ -24,3 +24,4 @@ def fct_de_chunk(texte, taille=1, tag=""):
 
     # print(fct_de_chunk(nom_cv, taille=2, tag="[CV]"))
     
+

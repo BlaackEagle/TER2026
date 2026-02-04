@@ -64,23 +64,20 @@ submitBtn.onclick = async () => {
 
                     box_result.className = 'cv-card';
 
-                    const vectorPreview = cv.vecteur.slice(0, 8).map(n => n.toFixed(5)).join(', ');
-
                     box_result.innerHTML = `
-                       <h3>${cv.nom_fichier}</h3>
-                        
+                       <h3>${cv.nom_fichier}</h3>          
                         <div class="cv-stats">
-                            <p><strong>Dimensions :</strong> ${cv.forme_vecteur}</p>
-                            <p><strong>Vecteur (extrait) :</strong> <span class="vector-data">[ ${vectorPreview}, ... ]</span></p>
-                            <p><strong>Pertinence : ${cv.pertinence} %</strong></p>
+                            <p><strong>Pertinence Max : ${cv.pertinence} %</strong></p>
                         </div>
-
-                        <p class="text-label"><strong>Contenu du CV :</strong></p>
-                        
+                        <div style="background: #e6fffa; padding: 10px; border-left: 5px solid #38b2ac; margin-bottom: 15px;">
+                            <p style="color: #2c7a7b; font-weight: bold; margin-bottom: 5px;">Passage le plus pertinent :</p>
+                            <p style="font-style: italic;">"${cv.meilleur_extrait}"</p>
+                        </div>
+                        <p class="text-label"><strong>Contenu complet :</strong></p>
                         <div class="cv-content-box">
                             ${cv.texte_fichier}
-                        </div>`;
-
+                        </div>`; 
+                        
                         zoneResultat.appendChild(box_result);
                     });
                 }
