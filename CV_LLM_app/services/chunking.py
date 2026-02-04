@@ -1,16 +1,27 @@
 import re
 
-def fct_de_chunk(texte, taille=1, tag=""):
+def fct_de_chunk(texte, taille=50, mode="mots", tag=""):
     if not texte:
         return []
 
-    lignes_brutes = re.split(r"\r?\n+", texte.strip()) # \r?\n+ <=> n'importe quel saut de ligne (cf TP2 HAI923I)
-    lignes_propres = [re.sub(r"\s+", " ", l).strip() for l in lignes_brutes if l.strip()] #enleve les espaces de trop dans chaque ligne
+    elements = []
 
-    resultat_final = []
+    if mode == "lignes":
+        # on coupe aux sauts de ligne
+        lignes_brutes = re.split(r"\r?\n+", texte.strip())
+        elements = [re.sub(r"\s+", " ", l).strip() for l in lignes_brutes if l.strip()]
+    elif mode == "mots":
+        # on coupe à chaque espace
+        elements = texte.split()
+    else:
+        print(f"Mode '{mode}' inconnu, passage en mode mots par défaut")
+        elements = texte.split()
 
-    for i in range(0, len(lignes_propres), taille):
-        groupe = lignes_propres[i : i + taille]
+    resultat_final = []    
+
+    for i in range(0, len(elements), taille):
+        groupe = elements[i : i + taille]
+        #espaces pour coller les mots
         bloc_texte = " ".join(groupe)
         
         if tag:
@@ -18,10 +29,4 @@ def fct_de_chunk(texte, taille=1, tag=""):
 
         resultat_final.append(bloc_texte)
 
-    return resultat_final
-    
-    # Test : Je veux des paquets de 2 lignes avec le tag [CV]
-
-    # print(fct_de_chunk(nom_cv, taille=2, tag="[CV]"))
-    
-
+    return resultat_final  

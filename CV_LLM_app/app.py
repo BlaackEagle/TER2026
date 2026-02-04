@@ -45,8 +45,8 @@ def analyse_cv():
         
         if text_extrait:
             # DEBUT CHUNKING
-            chunks = fct_de_chunk(text_extrait, taille=4, tag="[CV]")
-            print(f"--> {filename} : {len(chunks)} chunks obtenus")
+            chunks = fct_de_chunk(text_extrait, taille=40, mode="mots", tag="[CV]")
+            print(f"--> {filename} : {len(chunks)} chunks obtenus(mots)")
 
             meilleur_score = -1
             meilleur_passage = ""
