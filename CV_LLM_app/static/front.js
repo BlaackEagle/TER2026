@@ -30,8 +30,8 @@ fileInput.onchange = (e) => updateFiles(e.target.files);
 
 // Envoi
 submitBtn.onclick = async () => {
-    if (!files.length) {
-        alert('Sélectionnez des fichiers');
+    if (files.length === 0 && promptInput.value.trim() === "") {
+        alert('Sélectionnez des fichiers ou entrez un prompt');
         return;
     }
 
@@ -39,7 +39,11 @@ submitBtn.onclick = async () => {
     submitBtn.textContent = 'Envoi...';
 
     const formData = new FormData();
-    files.forEach(f => formData.append('cv', f));
+
+    if (files.length > 0) {
+        files.forEach(f => formData.append('cv', f));
+    }
+
     formData.append('prompt', promptInput.value);
     try {
         const res = await fetch('/analyse', {

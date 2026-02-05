@@ -50,9 +50,9 @@ def extraire_text_pdf(pdf_path) :
 
 
 #Version avec pdfPlumber qui marche tellement mieux qu'avec PdfReader
-def extraire_intelligent(pdf_path):
+def extraire_intelligent(pdf_object):
     texte_complet = ""
-    with pdfplumber.open(pdf_path) as pdf:
+    with pdfplumber.open(pdf_object) as pdf:
         for page in pdf.pages:
             texte = page.extract_text(layout=True)
             if texte:
