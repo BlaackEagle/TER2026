@@ -6,6 +6,7 @@ const status = document.getElementById('status');
 const zoneResultat = document.getElementById('zone-resultat');
 const contenuCv = document.getElementById('contenu-cv');
 const promptInput = document.getElementById('user-prompt');
+const resetBtn = document.getElementById('reset-btn');
 
 let files = [];
 
@@ -101,6 +102,41 @@ submitBtn.onclick = async () => {
 
     submitBtn.disabled = false;
     submitBtn.textContent = 'Sauvegarder';
+};
+
+//reintialiser la memoire
+resetBtn.onclick = async () => {
+    resetBtn.disabled = true;
+    resetBtn.textContent = 'Nettoyage...';
+
+    try {
+        const res = await fetch('/reset', {
+            method: 'POST'
+        });
+
+        const data = await res.json();
+
+        if (res.ok) {
+            status.textContent = data.message;
+            status.className = 'success';
+            
+            if (zoneResultat) zoneResultat.style.display = 'none';
+            files = [];
+            dropzone.querySelector('p').textContent = 'Glissez vos fichiers ici ou parcourir';
+            
+            fileInput.value = ''; 
+        } else {
+            status.textContent = 'Erreur lors du reset';
+            status.className = 'error';
+        }
+    } catch (err) {
+        console.error(err);
+        status.textContent = 'Erreur serveur';
+        status.className = 'error';
+    }
+
+    resetBtn.disabled = false;
+    resetBtn.textContent = 'Réinitialiser';
 };
 
 // rajout fichiers
