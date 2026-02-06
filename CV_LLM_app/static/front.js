@@ -57,6 +57,8 @@ submitBtn.onclick = async () => {
         if (res.ok) {
             status.textContent = data.message;
             status.className = 'success';
+            
+            resetBtn.style.display = 'block';
 
             const listeCVs = data.data;
 
@@ -125,6 +127,8 @@ resetBtn.onclick = async () => {
             dropzone.querySelector('p').textContent = 'Glissez vos fichiers ici ou parcourir';
             
             fileInput.value = ''; 
+            resetBtn.style.display = 'none';
+
         } else {
             status.textContent = 'Erreur lors du reset';
             status.className = 'error';
