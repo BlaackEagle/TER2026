@@ -16,7 +16,6 @@ TEXTES_COMPLETS_GLOBAUX = {}
 def accueil():
     return render_template("accueil.html")
 
-#Nassim, pour coder le bouton pour vider la mémoire utilise cette route, elle fait déjà ce qu'il faut
 @app.route('/reset', methods=['POST'])
 def reset_memoire():
     global BDD_GLOBALE, TEXTES_COMPLETS_GLOBAUX
