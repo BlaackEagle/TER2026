@@ -8,11 +8,7 @@ from services.cosinus_similarity import pertinence
 from services.chunking import fct_de_chunk
 
 app = Flask(__name__)
-UPLOAD_FOLDER = 'uploads'
 
-if not os.path.exists(UPLOAD_FOLDER):
-    os.makedirs(UPLOAD_FOLDER)
-app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 BDD_GLOBALE = []
 TEXTES_COMPLETS_GLOBAUX = {}
 
@@ -45,7 +41,7 @@ def analyse_cv():
         text_extrait = extraire_intelligent(file)
         if text_extrait:
             TEXTES_COMPLETS_GLOBAUX[filename] = text_extrait
-            chunks = fct_de_chunk(text_extrait, taille=40, mode="mots", tag="[CV]")
+            chunks = fct_de_chunk(text_extrait, taille=40, mode="mots", tag="")
             vectoriser_liste_text(chunks, filename, BDD_GLOBALE)
             nouveaux_fichiers_traites += 1
         else:
