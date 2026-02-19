@@ -37,10 +37,10 @@ def analyse_cv():
         filename = secure_filename(file.filename)
         if filename in TEXTES_COMPLETS_GLOBAUX:
             continue
-        text_extrait = extraire_intelligent(file)
-        if text_extrait:
-            TEXTES_COMPLETS_GLOBAUX[filename] = text_extrait
-            chunks = fct_de_chunk(text_extrait, taille=40, mode="mots", tag="")
+        texte = extraire_intelligent(file)
+        if texte:
+            TEXTES_COMPLETS_GLOBAUX[filename] = texte
+            chunks = fct_de_chunk(texte, taille=85, modele_name="sentence-transformers/all-MiniLM-L6-v2", tag="")
             vectoriser_liste_text(chunks, filename, BDD_GLOBALE)
             nouveaux_fichiers_traites += 1
         else:
