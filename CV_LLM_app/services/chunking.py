@@ -1,6 +1,9 @@
 import re
+from transformers import AutoTokenizer
 
-def fct_de_chunk(texte, taille=50, mode="mots", tag=""):
+TOKENIZER = AutoTokenizer.from_pretrained('sentence-transformers/all-MiniLM-L6-v2')
+
+def fct_de_chunk(texte, taille=50, mode="mots", tag="", overlap = 10):
     if not texte:
         return []
 
@@ -19,14 +22,16 @@ def fct_de_chunk(texte, taille=50, mode="mots", tag=""):
 
     resultat_final = []    
 
-    for i in range(0, len(elements), taille):
-        groupe = elements[i : i + taille]
-        #espaces pour coller les mots
-        bloc_texte = " ".join(groupe)
-        
-        if tag:
-            bloc_texte = f"{tag} {bloc_texte}"   
+    for j in range(0, taille, overlap) :
+        for i in range(j, len(elements), taille):
+            groupe = elements[i : i + taille]
+            bloc_texte = " ".join(groupe)
 
-        resultat_final.append(bloc_texte)
+            if tag:
+                bloc_texte = f"{tag} {bloc_texte}"
 
-    return resultat_final  
+            resultat_final.append(bloc_texte)
+
+    return resultat_final
+
+

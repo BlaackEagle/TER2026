@@ -1,7 +1,6 @@
 import os
 from flask import Flask, jsonify, render_template, request
 from werkzeug.utils import secure_filename
-
 from services.vectorizer_de_text import vectoriser_liste_text, calculer_scores_bdd, vectoriser_text
 from services.pdf_parser import extraire_intelligent
 from services.cosinus_similarity import pertinence
@@ -40,7 +39,7 @@ def analyse_cv():
         text_extrait = extraire_intelligent(file)
         if text_extrait:
             TEXTES_COMPLETS_GLOBAUX[filename] = text_extrait
-            chunks = fct_de_chunk(text_extrait, taille=40, mode="mots", tag="")
+            chunks = fct_de_chunk(text_extrait, taille=10, mode="mots", tag="", overlap=5)
             vectoriser_liste_text(chunks, filename, BDD_GLOBALE)
             nouveaux_fichiers_traites += 1
         else:
