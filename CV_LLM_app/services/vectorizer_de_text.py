@@ -36,7 +36,7 @@ def note_final_bdd(base_de_donnee) :
     for ligne in base_de_donnee :
         nom_fichier = ligne['nomFichier']
         nb_passage_pertinent = compteur_pertinence.get(nom_fichier, 0)
-        nb_passage = compteur_chunk.get(nom_fichier, 0)
+        #nb_passage = compteur_chunk.get(nom_fichier, 0)
         facteur_boost = min(0.9, nb_passage_pertinent*0.10)
         ligne['score'] = ligne['score'] + (100 - ligne['score']) * facteur_boost
     base_de_donnee.sort(key=lambda x : x['score'], reverse = True)
