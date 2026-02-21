@@ -79,11 +79,7 @@ submitBtn.onclick = async () => {
                         <div style="background: #e6fffa; padding: 10px; border-left: 5px solid #38b2ac; margin-bottom: 15px;">
                             <p style="color: #2c7a7b; font-weight: bold; margin-bottom: 5px;">Passage le plus pertinent :</p>
                             <p style="font-style: italic;">"${cv.meilleur_extrait}"</p>
-                        </div>
-                        <p class="text-label"><strong>Contenu complet :</strong></p>
-                        <div class="cv-content-box">
-                            ${cv.texte_fichier}
-                        </div>`; 
+                        </div>`;
                         
                         zoneResultat.appendChild(box_result);
                     });
