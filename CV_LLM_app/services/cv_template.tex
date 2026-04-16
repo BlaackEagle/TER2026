@@ -1,0 +1,43 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[french]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[margin=1.5cm]{geometry}
+
+\begin{document}
+
+% En-tête
+\begin{center}
+    {\Huge \textbf{[[PRENOM]] [[NOM]]}} \\[0.2cm]
+    {\Large \textbf{[[JOB_TITLE]]}} \\[0.1cm]
+    [[EMAIL]] \ | \ [[PHONE]]
+\end{center}
+
+\vspace{0.3cm}
+
+% Résumé / Profil
+\section*{Profil Professionnel}
+\noindent
+[[RESUME]]
+
+\vspace{0.3cm}
+
+% Compétences
+\section*{Compétences Techniques}
+\noindent
+[[BLOC_COMPETENCES]]
+
+\vspace{0.3cm}
+
+% Expériences
+\section*{Expériences Professionnelles}
+[[BLOC_EXPERIENCES]]
+
+\vspace{0.3cm}
+
+% Formations
+\section*{Formation \& Diplômes}
+[[BLOC_FORMATIONS]]
+
+\end{document}
