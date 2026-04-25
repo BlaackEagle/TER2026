@@ -2,7 +2,7 @@ import os
 from flask import Flask, jsonify, render_template, request
 from werkzeug.utils import secure_filename
 
-from services.vectorizer_de_text import vectoriser_liste_text, calculer_scores_bdd, vectoriser_text, note_final_bdd
+from services.vectorizer_de_text import vectorizer_de_text
 from services.pdf_parser import extraire_intelligent
 from services.cosinus_similarity import pertinence
 from services.chunking import fct_de_chunk
@@ -12,8 +12,8 @@ import chromadb
 app = Flask(__name__)
 client = chromadb.EphemeralClient()
 collection = client.create_collection(name="session_active")
-#BDD_GLOBALE = []
 TEXTES_COMPLETS_GLOBAUX = {}
+vdt = vectorizer_de_text()
 
 @app.route('/')
 def accueil():
@@ -30,9 +30,9 @@ def reset_memoire():
 
 @app.route('/analyse', methods=['POST'])
 def analyse_cv():
-    global BDD_GLOBALE, TEXTES_COMPLETS_GLOBAUX
+    global collection, TEXTES_COMPLETS_GLOBAUX
     user_prompt = request.form.get('prompt', '')
-    vecteur_prompt = vectoriser_text(user_prompt)
+    vecteur_prompt = vdt.vectoriser_text(user_prompt)
     files = request.files.getlist('cv')
     nouveaux_fichiers_traites = 0
 
@@ -45,14 +45,14 @@ def analyse_cv():
         if text_extrait:
             TEXTES_COMPLETS_GLOBAUX[filename] = text_extrait
             chunks = fct_de_chunk(text_extrait, taille=30, mode="mots", tag="", overlap=5)
-            vectoriser_liste_text(chunks, filename, collection)
+            vdt.vectoriser_liste_text(chunks, filename, collection)
             nouveaux_fichiers_traites += 1
         else:
             continue
     if collection.count() == 0 :
         return jsonify({'error': 'Aucun fichier en mémoire. Envoyez des CVs !'}), 400
-    bdd_score = calculer_scores_bdd(collection, vecteur_prompt)
-    note_final_bdd(bdd_score)
+    bdd_score = vdt.calculer_scores_bdd(collection, vecteur_prompt)
+    vdt.note_final_bdd(bdd_score)
     data_pour_le_front = []
     vus = set()
     for ligne in bdd_score :
