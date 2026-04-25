@@ -7,9 +7,12 @@ from services.pdf_parser import extraire_intelligent
 from services.cosinus_similarity import pertinence
 from services.chunking import fct_de_chunk
 
-app = Flask(__name__)
+import chromadb
 
-BDD_GLOBALE = []
+app = Flask(__name__)
+client = chromadb.EphemeralClient()
+collection = client.create_collection(name="session_active")
+#BDD_GLOBALE = []
 TEXTES_COMPLETS_GLOBAUX = {}
 
 @app.route('/')
@@ -18,9 +21,10 @@ def accueil():
 
 @app.route('/reset', methods=['POST'])
 def reset_memoire():
-    global BDD_GLOBALE, TEXTES_COMPLETS_GLOBAUX
-    BDD_GLOBALE = []
+    global collection, client, TEXTES_COMPLETS_GLOBAUX
     TEXTES_COMPLETS_GLOBAUX = {}
+    client.delete_collection(name="session_active")
+    collection = client.create_collection(name="session_active", metadata={"hnsw:space": "cosine"})
     print("Mémoire vidée !")
     return jsonify({'message': 'Mémoire vidée'})
 
@@ -41,17 +45,17 @@ def analyse_cv():
         if text_extrait:
             TEXTES_COMPLETS_GLOBAUX[filename] = text_extrait
             chunks = fct_de_chunk(text_extrait, taille=30, mode="mots", tag="", overlap=5)
-            vectoriser_liste_text(chunks, filename, BDD_GLOBALE)
+            vectoriser_liste_text(chunks, filename, collection)
             nouveaux_fichiers_traites += 1
         else:
             continue
-    if not BDD_GLOBALE:
+    if collection.count() == 0 :
         return jsonify({'error': 'Aucun fichier en mémoire. Envoyez des CVs !'}), 400
-    calculer_scores_bdd(BDD_GLOBALE, vecteur_prompt)
-    note_final_bdd(BDD_GLOBALE)
+    bdd_score = calculer_scores_bdd(collection, vecteur_prompt)
+    note_final_bdd(bdd_score)
     data_pour_le_front = []
     vus = set()
-    for ligne in BDD_GLOBALE :
+    for ligne in bdd_score :
         nom = ligne['nomFichier']
         if nom not in vus:
             texte_entier = TEXTES_COMPLETS_GLOBAUX.get(nom, 'null')
