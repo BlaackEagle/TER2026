@@ -411,10 +411,12 @@ class CVGenerator:
                 print(result.stdout[-1000:])
             else:
                 print(f"PDF créé : {titre_propre} : {base_filename}.pdf")
-                for ext in [".aux", ".log", ".tex"]:
-                    temp_file = os.path.join(output_dir, f"{base_filename}{ext}")
-                    if os.path.exists(temp_file):
-                        os.remove(temp_file)
+            
+            
+            for ext in [".aux", ".log", ".tex"]:
+                temp_file = os.path.join(output_dir, f"{base_filename}{ext}")
+                if os.path.exists(temp_file):
+                    os.remove(temp_file)
         except Exception as e:
             print("Erreur d'exécution python :", e)
  
