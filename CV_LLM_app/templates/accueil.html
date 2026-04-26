@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,31 +8,49 @@
     <link rel="stylesheet" href="/static/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=BBH+Bartle&family=Bebas+Neue&family=Dosis:wght@200..800&family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=IBM+Plex+Sans:ital,wght@0,100..700;1,100..700&family=McLaren&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=BBH+Bartle&family=Bebas+Neue&family=Dosis:wght@200..800&family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=IBM+Plex+Sans:ital,wght@0,100..700;1,100..700&family=McLaren&display=swap"
+        rel="stylesheet">
 </head>
+
 <body>
-<h1 class="titreprincipal">DeepCV</h1>
-<div class="lesdeuxfenetres">
-    <div class="container">
+    <h1 class="titreprincipal">DeepCV</h1>
+    <div class="lesdeuxfenetres">
+        <div class="container">
 
-        <div class="upload-card">
-            <h2>Upload des CVs</h2>
-            <div class="dropzone" id="dropzone">
-                <p>Glissez vos fichiers ici ou <span class="link">parcourir</span></p>
-                <input type="file" id="files" multiple accept=".pdf,.docx" hidden>
+            <div class="upload-card">
+                <h2>Upload des CVs</h2>
+                <div class="dropzone" id="dropzone">
+                    <p>Glissez vos fichiers ici ou <span class="link">parcourir</span></p>
+                    <input type="file" id="files" multiple accept=".pdf,.docx" hidden>
+                </div>
+                <div class="prompt-area">
+                    <div class="prompt-tabs">
+                        <span class="prompt-tab active" id="tab-text" onclick="switchTab('text')">✏️ Texte</span>
+                        <span class="prompt-tab" id="tab-pdf" onclick="switchTab('pdf')">📄 PDF</span>
+                    </div>
+                    <textarea id="user-prompt" class="search-box" placeholder="Décrivez le profil recherché"></textarea>
+                    <div id="prompt-pdf-zone" style="display:none;">
+                        <label for="prompt-pdf" class="dropzone"
+                            style="cursor:pointer; display:flex; align-items:center; justify-content:center;">
+                            <p id="prompt-pdf-label">Glissez un PDF ou <span class="link">parcourir</span></p>
+                            <input type="file" id="prompt-pdf" accept=".pdf" hidden>
+                        </label>
+                    </div>
+                </div>
+                <button id="submit">Sauvegarder et Analyser</button>
+
+                <button id="reset-btn"
+                    style="background: #e53e3e; margin-top: 10px; display: none;">Réinitialiser</button>
+
+                <div id="status"></div>
             </div>
-            <textarea id="user-prompt" class="search-box" placeholder="Décrivez le profil recherché"></textarea>
-            <button id="submit">Sauvegarder et Analyser</button>
-
-            <button id="reset-btn" style="background: #e53e3e; margin-top: 10px; display: none;">Réinitialiser</button>
-            
-            <div id="status"></div>
         </div>
+
+        <div id="zone-resultat" class="result-box" style="display: none;"></div>
     </div>
 
-    <div id="zone-resultat" class="result-box" style="display: none;"></div>
-</div>
-
-<script src="/static/front.js"></script>
+    <script src="/static/front.js"></script>
 </body>
+
 </html>

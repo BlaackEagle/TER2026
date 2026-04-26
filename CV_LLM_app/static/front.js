@@ -6,8 +6,45 @@ const status = document.getElementById('status');
 const zoneResultat = document.getElementById('zone-resultat');
 const contenuCv = document.getElementById('contenu-cv');
 const promptInput = document.getElementById('user-prompt');
-const resetBtn = document.getElementById('reset-btn');
+const promptPdfInput = document.getElementById('prompt-pdf');
+const promptPdfLabel = document.getElementById('prompt-pdf-label');
 
+function switchTab(tab) {
+    const isText = tab === 'text';
+    document.getElementById('tab-text').classList.toggle('active', isText);
+    document.getElementById('tab-pdf').classList.toggle('active', !isText);
+    document.getElementById('user-prompt').style.display = isText ? '' : 'none';
+    document.getElementById('prompt-pdf-zone').style.display = isText ? 'none' : '';
+}
+
+promptPdfInput.onchange = (e) => {
+    const f = e.target.files[0];
+    promptPdfLabel.innerHTML = f ? `<strong>${f.name}</strong>` : 'Glissez un PDF ou <span class="link">parcourir</span>';
+};
+
+const promptPdfZoneLabel = document.querySelector('#prompt-pdf-zone .dropzone');
+
+promptPdfZoneLabel.ondragover = (e) => {
+    e.preventDefault();
+    promptPdfZoneLabel.classList.add('hover');
+};
+promptPdfZoneLabel.ondragleave = () => promptPdfZoneLabel.classList.remove('hover');
+promptPdfZoneLabel.ondrop = (e) => {
+    e.preventDefault();
+    promptPdfZoneLabel.classList.remove('hover');
+    const f = e.dataTransfer.files[0];
+    if (f && f.type === 'application/pdf') {
+        // Injecter le fichier dans l'input
+        const dt = new DataTransfer();
+        dt.items.add(f);
+        promptPdfInput.files = dt.files;
+        promptPdfLabel.innerHTML = `<strong>${f.name}</strong>`;
+    }
+};
+
+
+
+const resetBtn = document.getElementById('reset-btn');
 let files = [];
 
 // Click pour ouvrir
@@ -46,6 +83,7 @@ submitBtn.onclick = async () => {
     }
 
     formData.append('prompt', promptInput.value);
+    if (promptPdfInput.files[0]) formData.append('prompt_pdf', promptPdfInput.files[0]);
     try {
         const res = await fetch('/analyse', {
             method: 'POST',

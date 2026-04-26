@@ -32,6 +32,9 @@ def reset_memoire():
 def analyse_cv():
     global collection, TEXTES_COMPLETS_GLOBAUX
     user_prompt = request.form.get('prompt', '')
+    prompt_pdf = request.files.get('prompt_pdf')
+    if prompt_pdf and prompt_pdf.filename:
+        user_prompt = extraire_intelligent(prompt_pdf) or user_prompt
     vecteur_prompt = vdt.vectoriser_text(user_prompt)
     files = request.files.getlist('cv')
     nouveaux_fichiers_traites = 0
