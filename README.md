@@ -40,6 +40,23 @@ python CV_LLM_app/app.py
 
 pip freeze > requirements.txt
 
+### Utiliser le générateur de cv
+
+## 1 - Prérequis
+Il faut la commande "pdflatex" pour utiliser le générateur
+Pour l'installer via Windows : https://miktex.org/download (lancer l'exécuteur)
+Pour l'installer via Linux :   sudo apt install texlive-base (commande terminal)
+Pour l'installer via MacOS :   https://www.tug.org/mactex/morepackages.html (BasicTeX.pkg)
+
+## 2 - Commande pour l'utiliser
+
+python .\CV_LLM_app\services\data_generator.py
+
+ou bien avec l'option --nb (pour le nombre de cv) et --type (pour le type btp,dev...)
+utiliser -h pour voir tous les types disponibles
+
+python .\CV_LLM_app\services\data_generator.py --nb 10 --type dev
+
 *en gros c'est juste pour que je puisse récupérer vos ajouts vu que je travail sur ma machine personel*
 
 
