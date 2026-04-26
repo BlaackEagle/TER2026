@@ -200,11 +200,126 @@ class CVGenerator:
                     "Supervision des études d'exécution et validation des plans de synthèse, permettant d'anticiper les conflits entre les réseaux CVC, plomberie et électricité.",
                     "Gestion des relations avec les bureaux de contrôle (Apave, Socotec) pour garantir l'obtention des attestations de conformité finale avant la livraison."
                 ]
+            },
+            
+            "marketing": {
+                "job_titles": ["Responsable Marketing Digital", "Chef de Produit Senior", "Growth Hacker", "Responsable Communication"],
+                "skills": ["SEO", "SEA (Google Ads)", "Google Analytics", "Social Media Management", "Content Strategy", "Email Marketing", "Copywriting", "CRM (HubSpot)", "Market Analysis", "Brand Management"],
+                "companies": ["Publicis Sapient", "Havas Media", "L'Oréal", "LVMH", "Veepee", "ManoMano", "Agences 360"],
+                "schools_inge": ["HEC Paris", "ESSEC Business School", "EDHEC"],
+                "schools_uni": ["CELSA", "IAE Paris", "Sorbonne - Master Marketing"],
+                "schools_iut": ["IUT TC (Techniques de Commercialisation)", "IUT Information-Communication"],
+                "fields": ["Marketing Digital", "Stratégie de Marque", "Communication des Entreprises"],
+                "summaries": [
+                    "Expert marketing orienté résultats, spécialisé dans l'acquisition client et l'optimisation des taux de conversion (CRO). Fort d'une expérience en pilotage de budgets publicitaires importants, je maîtrise l'ensemble du tunnel de vente digital, de la notoriété à la fidélisation. Passionné par l'analyse de données, je transforme les insights consommateurs en stratégies de croissance concrètes.",
+                    "Stratège en communication et marketing avec une forte appétence pour le branding et le storytelling. J'accompagne les marques dans leur transformation digitale en créant des expériences omnicanales cohérentes. Mon approche repose sur une veille constante des tendances sociales et une gestion rigoureuse des KPIs pour garantir le ROI des campagnes."
+                ],
+                "actions": [
+                    "Pilotage de campagnes Google Ads et Social Ads avec un budget mensuel de 50k€, générant une hausse de 30% des leads qualifiés.",
+                    "Refonte de la stratégie de contenu SEO ayant permis de doubler le trafic organique du site web en l'espace de 6 mois.",
+                    "Lancement d'un nouveau produit sur le marché européen, incluant l'étude de marché, le positionnement prix et le plan média.",
+                    "Optimisation des scénarios d'automation marketing sur HubSpot, augmentant le taux d'ouverture des emails de 15%.",
+                    "Coordination d'une équipe de 5 créatifs (graphistes, rédacteurs) pour la production des assets de campagne annuelle.",
+                    "Analyse hebdomadaire des performances via Google Analytics et rédaction de rapports stratégiques pour la direction marketing.",
+                    "Mise en place d'un programme de parrainage client ayant contribué à 10% du chiffre d'affaires total sur le dernier trimestre.",
+                    "Négociation et gestion de partenariats avec des influenceurs majeurs du secteur, touchant une audience de plus de 500k abonnés.",
+                    "Organisation d'événements de relations presse et lancements de produits physiques pour renforcer l'image de marque.",
+                    "Audit complet de l'e-réputation de l'entreprise et mise en place d'une charte de modération pour les réseaux sociaux.",
+                    "Développement d'outils de veille concurrentielle automatisés pour ajuster en temps réel le positionnement de l'offre.",
+                    "Animation de workshops internes sur le Design Thinking pour favoriser l'innovation dans la conception des futurs services."
+                ]
+            },
+            
+            "medecine": {
+                "job_titles": ["Médecin Généraliste", "Interne en Médecine", "Chef de Clinique", "Médecin Urgentiste"],
+                "skills": ["Diagnostic clinique", "Prescription médicale", "Gestion des urgences", "Sémiologie médicale", "Lecture d'ECG", "Télémédecine", "Éthique et Déontologie", "Dossier Médical Partagé"],
+                "companies": ["AP-HP", "Hospices Civils de Lyon", "CHU de Bordeaux", "SOS Médecins", "Clinique Ramsay Santé", "Cabinet Médical Pluridisciplinaire"],
+                "schools_inge": [
+                    "Faculté de Médecine Paris Cité", 
+                    "Sorbonne Université - Faculté de Médecine",
+                    "Faculté de Médecine de Strasbourg",
+                    "Faculté de Médecine de Montpellier-Nîmes",
+                    "Aix-Marseille Université - Faculté des sciences médicales",
+                    "Faculté de Médecine de Lyon Est",
+                    "Faculté de Médecine de Lille"
+                ],
+                "schools_uni": [
+                    "Université de Bordeaux - Collège des Sciences de la Santé",
+                    "Université de Toulouse III - Paul Sabatier",
+                    "Université de Lorraine - Faculté de Médecine de Nancy",
+                    "Université de Rennes 1 - Faculté de Médecine",
+                    "Université de Nantes - Faculté de Médecine",
+                    "Université Côte d'Azur - Faculté de Médecine de Nice",
+                    "Université de Grenoble Alpes - Faculté de Médecine",
+                    "Université de Rouen Normandie",
+                    "Université de Caen Normandie",
+                    "Université de Tours - Faculté de Médecine"
+                ],
+                "schools_iut": ["IFSI (Soins Infirmiers)", "Institut de Formation en Santé"],
+                "fields": ["Médecine Générale", "Urgences et Réanimation", "Santé Publique"],
+                "summaries": [
+                    "Praticien dévoué possédant une solide expérience en médecine aiguë et suivi de pathologies chroniques. Mon approche est centrée sur le patient, alliant rigueur scientifique et écoute active pour assurer une prise en charge globale et personnalisée. Habitué au travail en équipe pluridisciplinaire, je m'engage à maintenir l'excellence des soins dans le respect strict du secret médical.",
+                    "Interne en fin de cursus avec une forte appétence pour la médecine d'urgence et la gestion de crise. Capable de prendre des décisions rapides dans des environnements à haute pression, je veille à la sécurité des patients et à la fluidité du parcours de soins. Mon parcours m'a permis de développer une expertise en diagnostic différentiel et en gestes techniques d'urgence."
+                ],
+                "actions": [
+                    "Réalisation de plus de 25 consultations quotidiennes, incluant le diagnostic, le traitement et le suivi thérapeutique des patients.",
+                    "Prise en charge autonome des urgences vitales au sein du SAU, avec réalisation de gestes de réanimation cardiorespiratoire.",
+                    "Coordination des soins pour les patients atteints de maladies chroniques (diabète, HTA) en lien avec les spécialistes hospitaliers.",
+                    "Mise en place de protocoles de télémédecine pour assurer la continuité des soins dans les zones de désert médical.",
+                    "Participation active aux réunions de concertation pluridisciplinaire (RCP) pour les cas cliniques complexes.",
+                    "Encadrement et formation pratique des étudiants hospitaliers (externes) lors de leurs stages cliniques en service.",
+                    "Rédaction rigoureuse des observations médicales et des comptes rendus de sortie sur le logiciel métier (Orbis/DxCare).",
+                    "Animation de séances de prévention (sevrage tabagique, vaccination) auprès de populations à risque.",
+                    "Gestion des prescriptions médicamenteuses en veillant à l'absence d'interactions dangereuses et au respect des recommandations HAS.",
+                    "Participation aux gardes de 24h et astreintes médicales, garantissant la permanence des soins de l'établissement.",
+                    "Réalisation de petites chirurgies ambulatoires et soins de plaies complexes (sutures, pansements spécifiques).",
+                    "Accompagnement des familles dans le cadre de l'annonce de diagnostics graves et mise en place de soins palliatifs."
+                ]
+            },
+
+            "rh": {
+                "job_titles": ["Talent Acquisition Specialist", "Responsable Ressources Humaines", "HR Business Partner (HRBP)", "Chargé de Recrutement IT", "Gestionnaire Paie et RH"],
+                "skills": ["Sourcing", "Entretiens structurés", "Droit du travail", "Gestion de la paie", "SIRH (Workday, Lucca)", "Marque employeur", "Onboarding", "GPEC", "Relations sociales (CSE)", "Formation"],
+                "companies": ["Capgemini", "Doctolib", "L'Oréal", "Criteo", "Thales", "Orange", "Cabinet de recrutement Michael Page"],
+                "schools_inge": ["CIFFOP", "Sciences Po Paris", "HEC Paris - Majeure RH"], 
+                "schools_uni": ["Université Paris 1 Panthéon-Sorbonne", "IAE Paris", "Université de Strasbourg - Master RH"],
+                "schools_iut": ["IUT GEA (Gestion des Entreprises)", "Licence Pro Métiers de la GRH", "IUT Carrières Juridiques"],
+                "fields": ["Ressources Humaines", "Droit Social", "Management des Organisations"],
+                "summaries": [
+                    "Professionnel des Ressources Humaines passionné par le développement des talents et l'accompagnement des managers. Doté d'une forte expertise en recrutement (notamment sur des profils pénuriques IT) et en droit social, je m'attache à construire une marque employeur forte. Mon objectif est d'aligner la stratégie RH avec les objectifs business de l'entreprise tout en garantissant un climat social serein.",
+                    "HR Business Partner polyvalent avec plus de 5 ans d'expérience dans l'accompagnement de la croissance d'entreprises tech. J'interviens sur l'ensemble du cycle de vie des collaborateurs : de l'onboarding optimisé à la gestion des carrières (GPEC), en passant par la structuration des politiques de rémunération. Rigoureux et à l'écoute, je suis un véritable partenaire de confiance pour les équipes opérationnelles."
+                ],
+                "actions": [
+                    "Pilotage du cycle de recrutement complet pour des profils Tech et Produit, aboutissant à plus de 40 embauches en CDI sur l'année.",
+                    "Déploiement d'un nouveau logiciel SIRH (Lucca) pour automatiser la gestion des congés et le suivi des temps de travail.",
+                    "Refonte totale du processus d'Onboarding, ce qui a permis de réduire le taux de turnover des nouveaux collaborateurs de 15% lors de la période d'essai.",
+                    "Préparation et co-animation des réunions mensuelles avec le Comité Social et Économique (CSE), en garantissant un dialogue social constructif.",
+                    "Conception et déploiement du plan de développement des compétences (plan de formation) avec un budget annuel alloué de 150 000 euros.",
+                    "Gestion administrative du personnel (DPAE, contrats de travail, avenants) et supervision des éléments variables de paie pour 200 salariés.",
+                    "Mise en place d'une stratégie de sourcing multicanal (LinkedIn Recruiter, Github, cooptation) pour chasser des profils pénuriques (Data, DevOps).",
+                    "Organisation d'événements liés à la Marque Employeur (salons étudiants, meetups) ayant doublé le volume de candidatures spontanées entrantes.",
+                    "Accompagnement quotidien des managers sur les problématiques de droit du travail (sanctions disciplinaires, ruptures conventionnelles, licenciements).",
+                    "Création d'une grille de rémunération transparente et mise en place d'une politique d'avantages sociaux (mutuelle, tickets restaurant).",
+                    "Conduite d'une cartographie des emplois et des compétences (GPEC) pour anticiper les besoins en recrutement sur les 3 prochaines années.",
+                    "Mise en place d'enquêtes de satisfaction interne (eNPS) trimestrielles et création de plans d'action pour améliorer la Qualité de Vie au Travail (QVT)."
+                ]
             }
         }
  
-        self.first_names = ["Thomas", "Samy", "Emma", "Lucas", "Léa", "Hugo", "Chloé", "Léo", "Camille", "Nicolas", "Antoine", "Juliette"]
-        self.last_names = ["Martin", "Bernard", "Dubois", "Thomas", "Robert", "Richard", "Petit", "Durand", "Leroy", "Moreau", "Simon", "Laurent"]
+        self.first_names = [
+            "Thomas", "Samy", "Emma", "Lucas", "Léa", "Hugo", "Chloé", "Léo", "Camille", "Nicolas", 
+            "Antoine", "Juliette", "Gabriel", "Raphaël", "Arthur", "Louis", "Jules", "Adam", "Maël", 
+            "Jade", "Louise", "Ambre", "Alice", "Alba", "Rose", "Anna", "Mia", "Lina", "Noah", 
+            "Eden", "Gabin", "Isaac", "Léon", "Malo", "Naël", "Paul", "Aaron", "Liam", "Julia", 
+            "Léna", "Inès", "Aya", "Léonie", "Mila", "Iris", "Alexandre", "Victor", "Sarah", "Eva", "Clara"
+        ]
+        self.last_names = [
+            "Martin", "Bernard", "Dubois", "Thomas", "Robert", "Richard", "Petit", "Durand", "Leroy", "Moreau", 
+            "Simon", "Laurent", "Lefebvre", "Michel", "Garcia", "David", "Bertrand", "Roux", "Vincent", "Fournier", 
+            "Morel", "Girard", "André", "Lefèvre", "Mercier", "Dupont", "Lambert", "Guillaume", "Benoit", "Marin", 
+            "Garnier", "Chevalier", "François", "Legrand", "Gauthier", "Rousseau", "Blanc", "Guerin", "Muller", "Henry", 
+            "Roussel", "Nicolas", "Perrin", "Mathieu", "Clement", "Gautier", "Boyer", "Fontaine", "Robin", "Masson"
+        ]
  
     def _random_date(self, year: int, after_month: int = 1) -> tuple:
         """Retourne un (mois, année) aléatoire dans l'année donnée,
@@ -268,10 +383,21 @@ class CVGenerator:
  
     def generate_education(self, archetype_data: dict, graduation_year: int) -> List[Dict]:
         education = []
-        parcours_types = ["prepa_inge", "licence_master", "dut_inge", "bts_licence_pro", "but_master"]
-        choix_parcours = random.choice(parcours_types)
- 
         chosen_field = random.choice(archetype_data["fields"])
+
+        if "Médecine" in chosen_field or "Santé" in chosen_field or "Urgences" in chosen_field:
+            school_uni = random.choice(archetype_data["schools_uni"])
+            education.append({"degree": "Diplôme d'État de Docteur en Médecine", "field": chosen_field, "school": school_uni, "year": f"{graduation_year}"})
+            education.append({"degree": "DFASM (Diplôme de Formation Approfondie)", "field": "Sciences Médicales", "school": school_uni, "year": f"{graduation_year - 3} - {graduation_year - 1}"})
+            return education
+
+        parcours_types = ["prepa_inge", "licence_master", "dut_inge", "bts_licence_pro", "but_master"]
+        
+        # Pour les RH et Marketing, on évite les diplômes d'ingénieur purs
+        if "Ressources Humaines" in chosen_field or "Marketing" in chosen_field:
+            parcours_types = ["licence_master", "bts_licence_pro", "but_master"]
+
+        choix_parcours = random.choice(parcours_types)
  
         if choix_parcours == "prepa_inge":
             school_inge = random.choice(archetype_data["schools_inge"])
@@ -426,7 +552,7 @@ if __name__ == "__main__":
     parser.add_argument('--nb',   type=int, default=1,
                         help="Nombre de CV")
     parser.add_argument('--type', type=str,
-                        choices=['dev', 'dev_web', 'data_ia', 'game_dev', 'bio_info', 'devops', 'cybersecu', 'btp', 'random'],
+                        choices=['dev', 'dev_web', 'data_ia', 'game_dev', 'bio_info', 'devops', 'cybersecu', 'btp', 'marketing', 'medecine', 'rh', 'random'],
                         default='random', help="Archétype du CV")
  
     args = parser.parse_args()
