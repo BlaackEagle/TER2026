@@ -3,9 +3,9 @@ from flask import Flask, jsonify, render_template, request
 from werkzeug.utils import secure_filename
 
 from services.vectorizer_de_text import vectorizer_de_text
-from services.pdf_parser import extraire_intelligent
+from services.pdf_parser import PdfParser
 from services.cosinus_similarity import pertinence
-from services.chunking import fct_de_chunk
+from services.chunking import Chunker
 
 import csv
 import chromadb
@@ -15,6 +15,8 @@ client = chromadb.EphemeralClient()
 collection = client.create_collection(name="session_active")
 TEXTES_COMPLETS_GLOBAUX = {}
 vdt = vectorizer_de_text()
+parser = PdfParser()
+chunker = Chunker()
 
 @app.route('/')
 def accueil():
@@ -35,7 +37,7 @@ def analyse_cv():
     user_prompt = request.form.get('prompt', '')
     prompt_pdf = request.files.get('prompt_pdf')
     if prompt_pdf and prompt_pdf.filename:
-        user_prompt = extraire_intelligent(prompt_pdf) or user_prompt
+        user_prompt = parser.extraire_intelligent(prompt_pdf) or user_prompt
     vecteur_prompt = vdt.vectoriser_text(user_prompt)
     files = request.files.getlist('cv')
     nouveaux_fichiers_traites = 0
@@ -45,10 +47,10 @@ def analyse_cv():
         filename = secure_filename(file.filename)
         if filename in TEXTES_COMPLETS_GLOBAUX:
             continue
-        text_extrait = extraire_intelligent(file)
+        text_extrait = parser.extraire_intelligent(file)
         if text_extrait:
             TEXTES_COMPLETS_GLOBAUX[filename] = text_extrait
-            chunks = fct_de_chunk(text_extrait, taille=40, mode="mots", tag="", overlap=5)
+            chunks = chunker.fct_de_chunk(text_extrait, taille=40, mode="mots", tag="", overlap=5)
             vdt.vectoriser_liste_text(chunks, filename, collection)
             nouveaux_fichiers_traites += 1
         else:
