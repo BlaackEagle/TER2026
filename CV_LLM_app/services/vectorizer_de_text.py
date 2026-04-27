@@ -59,7 +59,7 @@ class vectorizer_de_text :
         
         for ligne in base_de_donnee:
             nom_fichier = ligne['nomFichier']
-            if ligne['score'] > 50:
+            if ligne['score'] > 55:
                 compteur_pertinence[nom_fichier] = compteur_pertinence.get(nom_fichier, 0) + 1
             compteur_chunk[nom_fichier] = compteur_chunk.get(nom_fichier, 0) + 1
 
