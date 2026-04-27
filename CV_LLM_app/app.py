@@ -5,7 +5,7 @@ from werkzeug.utils import secure_filename
 from services.vectorizer_de_text import vectorizer_de_text
 from services.pdf_parser import PdfParser
 from services.cosinus_similarity import pertinence
-from services.chunking import fct_de_chunk
+from services.chunking import Chunker
 
 import csv
 import chromadb
@@ -16,6 +16,7 @@ collection = client.create_collection(name="session_active")
 TEXTES_COMPLETS_GLOBAUX = {}
 vdt = vectorizer_de_text()
 parser = PdfParser()
+chunker = Chunker()
 
 @app.route('/')
 def accueil():
@@ -49,7 +50,7 @@ def analyse_cv():
         text_extrait = parser.extraire_intelligent(file)
         if text_extrait:
             TEXTES_COMPLETS_GLOBAUX[filename] = text_extrait
-            chunks = fct_de_chunk(text_extrait, taille=40, mode="mots", tag="", overlap=5)
+            chunks = chunker.fct_de_chunk(text_extrait, taille=40, mode="mots", tag="", overlap=5)
             vdt.vectoriser_liste_text(chunks, filename, collection)
             nouveaux_fichiers_traites += 1
         else:
