@@ -74,7 +74,7 @@ def analyse_cv():
                 'texte_fichier': texte_entier
             })
             vus.add(ligne['nomFichier'])
-    nom_du_csv = "resultats_40.csv" # <--- À CHANGER À CHAQUE TEST
+    nom_du_csv = "resultats_7.csv" # <--- À CHANGER À CHAQUE TEST
     with open(nom_du_csv, mode='w', newline='', encoding='utf-8') as fichier_csv:
         writer = csv.DictWriter(fichier_csv, fieldnames=['nom_fichier', 'score'])
         writer.writeheader()
