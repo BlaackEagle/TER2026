@@ -13,4 +13,4 @@ uploads/
 .idea/
 Templates_CV/
 
-.csv
+*.csv
